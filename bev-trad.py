@@ -11,7 +11,9 @@ def main():
     costo_rifornimento_combustione = st.number_input("Inserisci il costo al litro per il rifornimento dell'auto a combustione: ")
     costo_ricarica_casa = st.number_input("Inserisci il costo di ricarica elettrica a casa (costo al Kwh): ")
     costo_ricarica_colonnina = st.number_input("Inserisci il costo di ricarica elettrica in colonnina fast (costo al Kwh): ")
-    ricarica_casa = st.number_input("fornisci una stima percentuale approssimativa che indichi la proporzione di ricarica effettuata a casa: ")
+    ricarica_casa_percentuale = st.slider("Fornisci una stima percentuale approssimativa che indichi la proporzione di ricarica effettuata a casa:", min_value=0, max_value=100, value=0, step=1)
+
+
     anni_utilizzo= st.number_input("Per quanto tempo vuoi usare quest'auto (anni)? ")
     kwh_100= st.number_input("Quanti kwh consuma l'auto elettrica ogni 100 km? ")
     Litri=st.number_input("Quanti litri di carburante consuma l'auto a combustione ogni 100km? ")
@@ -25,10 +27,11 @@ def main():
     costo_tagliando_elettrica = st.number_input("Inserisci il costo di un tagliando per l'auto elettrica: ")
     costo_wallbox = st.number_input("Inserisci il costo del wallbox per l'auto elettrica: ")
     costo_installazione_wallbox = st.number_input("Inserisci il costo di installazione del wallbox: ")
-    Detrazione= st.number_input("inserisci se c'è una detrazione per il wallbox e l'installazione in termini percentuali ")
+    Detrazione= st.slider("inserisci se c'è una detrazione per il wallbox e l'installazione in termini percentuali ", min_value=0, max_value=100, value=0, step=1)
 
     if st.button("Calcola"):
         # Calcolo dei costi auto elettrica
+        ricarica_casa = ricarica_casa_percentuale / 100  # Converte la percentuale in frazione
         calcolo_kwh=kwh_100*km_annuali/100
         costo_ricarica_annuale=ricarica_casa*costo_ricarica_casa*calcolo_kwh+(1-ricarica_casa)*calcolo_kwh*costo_ricarica_colonnina
         costo_fisso_auto_elettrica=costo_auto_elettrica+costo_wallbox*(1-Detrazione)+costo_installazione_wallbox*(1-Detrazione)
