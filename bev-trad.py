@@ -34,6 +34,7 @@ def main():
         ricarica_casa = ricarica_casa_percentuale / 100  # Converte la percentuale in frazione
         calcolo_kwh=kwh_100*km_annuali/100
         costo_ricarica_annuale=ricarica_casa*costo_ricarica_casa*calcolo_kwh+(1-ricarica_casa)*calcolo_kwh*costo_ricarica_colonnina
+        Detrazione=Detrazione/100
         costo_fisso_auto_elettrica=costo_auto_elettrica+costo_wallbox*(1-Detrazione)+costo_installazione_wallbox*(1-Detrazione)
         costo_variabile_auto_elettica=costo_ricarica_annuale+costo_assicurazione_elettrica+costo_bollo_elettrica+costo_manutenzione_elettrica+costo_tagliando_elettrica
 
