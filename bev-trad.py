@@ -101,13 +101,13 @@ def main():
 
         fig_bar.add_trace(go.Bar(
             x=['Costi Fissi', 'Costi Variabili'],
-            y=[costo_fisso[0], costo_variabile[0]],
+            y=[costo_fisso[1], costo_variabile[1]],
             name='Auto a Combustione'
         ))
 
         fig_bar.add_trace(go.Bar(
             x=['Costi Fissi', 'Costi Variabili'],
-            y=[costo_fisso[1], costo_variabile[1]],
+            y=[costo_fisso[0], costo_variabile[0]],
             name='Auto Elettrica'
         ))
 
@@ -143,3 +143,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+git add .
